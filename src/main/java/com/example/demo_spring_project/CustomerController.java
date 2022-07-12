@@ -43,8 +43,8 @@ public class CustomerController {
         Customer customer = dto.getCustomerEntity(dto);
         customer.setBillingAccountNumber(banGenerator.generate());
         for (Address a : customer.getAddresses()) {
-            //a.setBillingAccountNumber(customer.getBillingAccountNumber());
-            a.setCustomer(customer);
+            a.setBillingAccountNumber(customer.getBillingAccountNumber());
+            //a.setCustomer(customer);
         }
         xConversationId = xConversationId == null ? UUID.randomUUID().toString() : xConversationId;
         LOGGER.info("Get customer call being made for Billing Account Number: {} with a ConversationId: {}",customer.getBillingAccountNumber(),xConversationId);
@@ -71,8 +71,8 @@ public class CustomerController {
         }
         dto.updateFromDTO(customers.get(0));
         for (Address a : customers.get(0).getAddresses()) {
-            //a.setBillingAccountNumber(customers.get(0).getBillingAccountNumber());
-            a.setCustomer(customers.get(0));
+            a.setBillingAccountNumber(customers.get(0).getBillingAccountNumber());
+            //a.setCustomer(customers.get(0));
         }
         customerRepo.save(customers.get(0));
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

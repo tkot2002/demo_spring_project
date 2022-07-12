@@ -18,10 +18,14 @@ import lombok.ToString;
     @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name = "id")
     private int id;
-    @ManyToOne
+
+    /*@ManyToOne
     @JoinColumn(name = "billing_account_number")
     @JsonBackReference
-    private Customer customer;
+    private Customer customer;*/
+
+    @Column(name = "billing_account_number")
+    private String billingAccountNumber;
     @Column(name = "address_line1")
     private String addressLine1;
     @Column(name = "address_line2")

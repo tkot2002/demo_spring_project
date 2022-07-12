@@ -9,6 +9,7 @@ import java.util.List;
 @Data public class AddressDTO {
     @JsonIgnore
     private int id;
+    private String billingAccountNumber;
     private String addressLine1;
     private String addressLine2;
     private String city;
@@ -17,7 +18,7 @@ import java.util.List;
 
     Address getAddressEntity(AddressDTO addressDTO) {
         Address address = new Address();
-        //address.setBillingAccountNumber(addressDTO.getBillingAccountNumber());
+        address.setBillingAccountNumber(addressDTO.getBillingAccountNumber());
         address.setAddressLine1(addressDTO.getAddressLine1());
         address.setAddressLine2(addressDTO.getAddressLine2());
         address.setCity(addressDTO.getCity());
@@ -28,7 +29,7 @@ import java.util.List;
 
     static AddressDTO getAddressDTO(Address address) {
         AddressDTO dto = new AddressDTO();
-        //dto.setBillingAccountNumber(address.getBillingAccountNumber());
+        dto.setBillingAccountNumber(address.getBillingAccountNumber());
         dto.setId(address.getId());
         dto.setAddressLine1(address.getAddressLine1());
         dto.setAddressLine2(address.getAddressLine2());
