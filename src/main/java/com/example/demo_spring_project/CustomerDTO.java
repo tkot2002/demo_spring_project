@@ -3,12 +3,14 @@ package com.example.demo_spring_project;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.ToString;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
 public class CustomerDTO {
+
     private String billingAccountNumber;
     private String firstName;
     private String lastName;

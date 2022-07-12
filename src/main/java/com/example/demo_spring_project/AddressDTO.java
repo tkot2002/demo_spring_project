@@ -17,7 +17,6 @@ import java.util.List;
 
     Address getAddressEntity(AddressDTO addressDTO) {
         Address address = new Address();
-        address.setId(addressDTO.getId());
         //address.setBillingAccountNumber(addressDTO.getBillingAccountNumber());
         address.setAddressLine1(addressDTO.getAddressLine1());
         address.setAddressLine2(addressDTO.getAddressLine2());

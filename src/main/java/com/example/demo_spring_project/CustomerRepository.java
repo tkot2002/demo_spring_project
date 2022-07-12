@@ -10,7 +10,6 @@ import java.util.List;
 public interface CustomerRepository extends JpaRepository<Customer, Integer>{
     List<Customer> findCustomerByBillingAccountNumber(String billingAccountNumber);
     long deleteByBillingAccountNumber(String billingAccountNumber);
-
     boolean existsByBillingAccountNumber(String ban);
 
 }

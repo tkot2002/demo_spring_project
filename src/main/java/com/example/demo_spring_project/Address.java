@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 import lombok.ToString;
@@ -14,12 +15,12 @@ import lombok.ToString;
 @Data public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.TABLE)
+    @Column(name = "id")
     private int id;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "billing_account_number", referencedColumnName = "billing_account_number")
+    @ManyToOne
+    @JoinColumn(name = "billing_account_number")
     @JsonBackReference
-    @ToString.Exclude
     private Customer customer;
     @Column(name = "address_line1")
     private String addressLine1;
