@@ -26,8 +26,6 @@ import java.util.List;
     @Column(name = "last_name")
     private String lastName;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    //@ToString.Exclude
-    //@JsonManagedReference
     private List<Address> addresses = new ArrayList<>();
     @Column(name = "phone_number")
     private String phoneNumber;
