@@ -31,15 +31,12 @@ public class CustomerDTO {
     }
 
     void updateFromDTO(Customer customer) {
-        if (firstName != null) customer.setFirstName(firstName);
-        if (lastName != null) customer.setLastName(lastName);
         if (!addresses.isEmpty()) {
             customer.getAddresses().removeAll(customer.getAddresses());
             for (AddressDTO a : addresses) {
                 customer.getAddresses().add(a.getAddressEntity(a));
             }
         }
-        if (phoneNumber != null) customer.setPhoneNumber(phoneNumber);
         if (emailId != null) customer.setEmailId(emailId);
     }
     static CustomerDTO getCustomerDTO(Customer customer){
@@ -53,5 +50,25 @@ public class CustomerDTO {
         dto.setPhoneNumber(customer.getPhoneNumber());
         dto.setEmailId(customer.getEmailId());
         return dto;
+    }
+
+    public boolean checkNull() {
+        if (firstName == null || lastName == null || phoneNumber == null || emailId == null || addresses.isEmpty()) return true;
+        for (AddressDTO a : addresses) {
+            if (a.checkNull()) return true;
+        }
+        return false;
+    }
+
+    public boolean checkNullUpdate() {
+        for (AddressDTO a : addresses) {
+            if (a.checkNull()) return true;
+        }
+        return false;
+    }
+
+    public boolean checkUpdate() {
+        if (firstName != null || lastName != null || phoneNumber != null) return true;
+        return false;
     }
 }

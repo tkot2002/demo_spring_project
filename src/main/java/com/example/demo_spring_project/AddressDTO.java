@@ -38,4 +38,10 @@ import java.util.List;
         dto.setState(address.getState());
         return dto;
     }
+
+    public boolean checkNull() {
+        if (addressLine1 == null || city == null || zip == null || state == null) return true;
+
+        return false;
+    }
 }
