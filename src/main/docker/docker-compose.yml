@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+  app:
+    image: 'demo-spring-project:latest'
+    build:
+      context: .
+    ports:
+      - "9191:8080"
+    container_name: app
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/customer
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=sql55!
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  db:
+    image: 'postgres'
+    container_name: db
+    ports:
+      - "9292:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=sql55!
