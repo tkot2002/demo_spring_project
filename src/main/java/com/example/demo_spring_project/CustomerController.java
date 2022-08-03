@@ -119,7 +119,7 @@ public class CustomerController {
     @GetMapping("/customer/{ban}")
     public ResponseEntity<CustomerDTO> getCustomer(@RequestHeader(value = "xConversationId",required = false) String xConversationId, @PathVariable String ban) throws NotFoundException {
         xConversationId = xConversationId == null ? UUID.randomUUID().toString() : xConversationId;
-        LOGGER.info("Get customer call being made for Billing Account Number: {} with a ConversationId: {}",ban,xConversationId);
+        LOGGER.info("Get Customer call being made for Billing Account Number: {} with a ConversationId: {}",ban,xConversationId);
         List<Customer> customers = customerRepo.findCustomerByBillingAccountNumber(ban);
         if (customers.isEmpty()) {
             throw new NotFoundException("Customer not found.");
