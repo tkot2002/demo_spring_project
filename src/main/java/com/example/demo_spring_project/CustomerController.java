@@ -117,6 +117,7 @@ public class CustomerController {
             @ApiResponse(responseCode = "404", description = "Customer not found.")
     })
     @GetMapping("/customer/{ban}")
+
     public ResponseEntity<CustomerDTO> getCustomer(@RequestHeader(value = "xConversationId",required = false) String xConversationId, @PathVariable String ban) throws NotFoundException {
         xConversationId = xConversationId == null ? UUID.randomUUID().toString() : xConversationId;
         LOGGER.info("Get Customer call being made for Billing Account Number: {} with a ConversationId: {}",ban,xConversationId);
