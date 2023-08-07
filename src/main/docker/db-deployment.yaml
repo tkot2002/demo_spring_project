@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: db
+    tier: database
+  name: db
+spec:
+  selector:
+    matchLabels:
+      app: db
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: db
+        tier: database
+    spec:
+      containers:
+        - env:
+            - name: POSTGRES_PASSWORD
+              value: "123"
+            - name: POSTGRES_USER
+              value: postgres
+          image: postgres
+          name: db
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5432
+              name: db
+          volumeMounts:
+            - mountPath: /var/lib/postgres
+              name: postgres-persistence-storage
+      volumes:
+        - name: postgres-persistence-storage
+          persistentVolumeClaim:
+            claimName: postgres-pv-claim
